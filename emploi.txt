@@ -1,0 +1,20 @@
+﻿      
+Pour lancer le programme il faut préparer un fichier, par exemple mespremiers.bat
+contenant la ligne : crible n ( par exemple : crible 1000000000 ) où n est la limite
+demandée pour l'intervalle de calcul du crible. 
+      
+Une fois le crible calculé on obtient un ensemble initial d'informations.
+Puis on passe en mode conversationnel dans lequel on peut utiliser le crible
+avec des commandes ayant les types suivants :
+  n 677 : combien y a-t-il de nombres premiers entre 1 et 677 ?
+  p 677 : le nombre 677 est-il premier ?
+  r 677 : quel est le rang du nombre 677 ?
+  s 677 : quel est le nombre premier qui suit 677 ?
+  ? 123 : quel est le nombre premier de rang 123 ?
+  q : quitter l'application.
+      
+NOTA : n, p, r et s fonctionnent avec un nombre à renseigner
+----   ? fonctionne avec un numéro ( le rang d'un nombre )
+      
+On obtient un rappel de ces commandes valides quand on effectue une commande erronée ou vide.
+      

@@ -1,0 +1,22 @@
+
+---------------------------------------------------
+
+Crible d'Eratosthène
+
+Calcul des nombres premiers entre 1 et 1000000000
+
+Le crible a : 28571429 octets
+
+Calcul du crible en : 2.765 s
+
+Et tout le calcul en : 2.796 s
+
+Nombre de nombres premiers calculés : 50847534
+
+Le premier nombre premier est : 2
+
+Le 50847534-ième nombre premier est : 999999937
+
+> q
+
+Appuyez sur une touche pour continuer... 

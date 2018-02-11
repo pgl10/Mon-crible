@@ -1,0 +1,74 @@
+﻿      
+Le crible d'Eratosthène est une méthode très ancienne qui permet de calculer
+les nombres premiers compris entre 1 et une limite n donnée.
+      
+Le principe consiste à marquer dans la liste des entiers positifs tous les 
+multiples des nombres premiers pris dans l'ordre où on les trouve dans la liste.
+La méthode s'arrête quand on a traité ou dépassé la racine carrée de la limite.
+Les nombres qui n'ont pas été marqués sont les nombres premiers recherchés.
+      
+Une amélioration classique consiste à mettre 2 au début de la liste puis à mettre
+ensuite dans la liste, habituellement nommée crible, uniquement les nombres impairs.
+      
+Pour gagner un peu de temps dans le calcul du crible et pour gagner de la place
+mémoire pour son implantation, on a décidé que les multiples de 2, 3, 5 et 7 ne 
+seront pas présents ni traités dans le crible. Cela entraine d'en tenir compte
+ensuite quand on veut exploiter le crible calculé ainsi. L'intérêt principal
+de ce programme réside dans la variante de la méthode de base ainsi définie.
+De plus, tout le source est disponible ici, on n'utilise aucune bibliothèque
+extérieure de programmes.
+      
+On pourra remarquer que le programme n'utilise pas la fonction racine carrée
+même pour s'arrêter à la racine carrée de la limite.
+      
+Une fois le crible calculé on a un mode conversationnel avec les commandes :
+- combien y a-t-il de nombres premiers entre 1 et un nombre donné ?
+- un nombre donné est-il premier ou composé ?
+- quel est le rang du nombre premier ou composé donné ?
+- quel est le nombre premier qui suit un nombre donné ?
+- quel est le nombre premier ayant le rang donné ?
+- quitter l'application
+      
+Le crible renseigne tous les nombres entiers entre 1 et la limite demandée
+sauf 0, 1, 2 et ses multiples ainsi que 3, 5 et 7 et leurs multiples.
+Dans le crible, où le premier nombre désigné est 11, il y a une séquence qui 
+se répète régulièrement avec un décalage de 2 x 3 x 5 x 7 = 210 à chaque fois.
+Cette séquence occupe seulement 48 positions puisque les multiples de 2, 
+3, 5 et 7 n'y sont pas présents. On caractérise aussi cette séquence par
+un cycle de 48 positions qui contient pour chacune la différence entre
+le nombre marqué suivant et le nombre marqué à cette postion. Ce cycle
+se répète régulièrement dans tout le crible.
+      
+Le programme est compilé avec MicroSoft Visual Studio 2012 Express for Windows Desktop.
+Il utilise les entiers sur 8 octets et fonctionne en mode console sous Windows 64 bits.
+Le source est largement commenté. Pour marquer un nombre du crible un seul bit suffit.
+On peut noter que la limite demandée pour le crible peut atteindre et dépasser plusieurs 
+centaines de milliards ( chacune : 100 000 000 000 ).
+      
+NOTA : On a observé sur un ordinateur courant les durées de calcul des cribles suivants :
+----   pour 1 à 10^8 ( 100 000 000 ) : 0.171 s
+       pour 1 à 10^9 ( 1 000 000 000 ) : 2.765 s
+       pour 1 à 10^10 ( 10 000 000 000 ) : 33.765 s
+       pour 1 à 10^11 ( 100 000 000 000 ) : 418.113 s
+       pour 1 à 250 000 000 000 : 1158.667 s
+      
+Il y a aussi une autre version compilée pour Windows 32 bits (x86). Cette version utilise 
+les entiers de type "unsigned int" sur 4 octets. Le source ci-joint montre les très peu 
+nombreuses modifications qui en résultent. Pour cette version la limite de l'exploration
+maximum est seulement : 4 294 311 961 et son explication est dans le source.
+      
+Si on avait choisi d'éviter les multiples de 2, 3, 5, 7 et 11 la séquence aurait
+2 x 3 x 5 x 7 x 11 = 2310 nombres et le cycle dans crible en aurait 480. Et en 
+continuant plus loin ces quantités explosent ! Inversement si on veut éviter uniquement
+les multiples de 2 et 3, la séquence a 6 nombres et le cycle 2 seulement. Dans ce 
+dernier cas, cela permet d'améliorer assez facilement les programmes habituels où
+le crible contient tous les nombres impairs et seulement ceux-là.
+      
+Les performances de ce programme sont bonnes, notamment au regard de la possibilité
+de dépasser la limite des entiers sur 32 bits pour l'intervalle d'exploration.
+Mais il y a sur Internet d'autres programmes qui vont plus vite, par exemple en 
+utilisant le parallélisme sur plusieurs processeurs ou plusieurs coeurs de processeurs.
+      
+On peut noter que le source est mono-fichier et qu'on utilise des variables globales. 
+Habituellement ceci ne plait pas aux puristes du C++ mais ici la lecture du source en est facilitée.
+      
