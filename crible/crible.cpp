@@ -8,7 +8,7 @@
 *  - next(n) : le nombre premier qui suit l'entier n         *
 *  - nieme(n) : la valeur du n-ième nombre premier           *
 *  - nbprem(n) : le nombre de premiers entre 1 et n          *
-*  Ce programe fonctionne correctement au-delà de            *
+*  Ce programme fonctionne correctement au-delà de           *
 *  plusieurs fois 10^11 ( 100 000 000 000 )                  *
 *************************************************************/
 
