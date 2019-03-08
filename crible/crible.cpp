@@ -113,6 +113,7 @@ void Eratosthene() {
     crible = new unsigned char[q];
     if(crible == NULL) limite();
     std::cout << std::endl << "Le crible a : " << q << " octets" << std::endl;
+    std::cout << std::endl << "Attendre ...   ";
     // Initialisation de crible[] : tous les marqueurs à 1
     memset(crible, '\xFF', q);
     //  Selon la méthode habituelle, on va marquer par un bit nul les multiples de
@@ -131,7 +132,6 @@ void Eratosthene() {
                 t=(j-11)/210*48+nb[(j-11)%210];
                 q=t/8;
                 //  Pour marquer à 0 le nombre composé j multiple de i
-                //  on pourrait aussi faire : crible[q]&=~(1<<(t&7));
                 crible[q]&=c0[t-8*q];
                 //  Le j suivant sera le prochain multiple de i 
                 //  non multiple de 2, 3, 5 ou 7
@@ -314,12 +314,10 @@ int main(int argc, char *argv[]) {
     if(nc > nmax) limite();
     clock_t start = clock();
     Eratosthene();
-    std::cout << std::fixed << std::endl << "Calcul du crible en : " << std::setprecision(3) 
+    std::cout << std::fixed << "\rCalcul du crible en : " << std::setprecision(3) 
               << double(clock()-start)/double(CLOCKS_PER_SEC) << " s" << std::endl;
     nbp=nbprem(nc);
     pgp=nieme(nbp);
-    std::cout << std::fixed  << std::endl << "Et tout le calcul en : " << std::setprecision(3)
-              << double(clock()-start)/double(CLOCKS_PER_SEC) << " s" << std::endl;
     std::cout << std::endl << "Nombre de nombres premiers calcul\202s : " << nbp << std::endl;
     std::cout << std::endl << "Le premier nombre premier est : " << 2 << std::endl;
     std::cout << std::endl << "Le " << nbp << "-i\212me nombre premier est : " << pgp << std::endl;

@@ -128,6 +128,7 @@ void Eratosthene() {
     crible=new unsigned char[q];
     if(crible==NULL) limite();
     std::cout << std::endl << "Le crible a : " << q << " octets" << std::endl;
+    std::cout << std::endl << "Attendre ...   ";
     // Initialisation de crible[] : tous les marqueurs à 1
     memset(crible, '\xFF', q);
     //  Selon la méthode habituelle, on va marquer par un bit nul les multiples de
@@ -334,12 +335,10 @@ int main(int argc, char *argv[]) {
     if(nc>nmax) limite();
     clock_t start = clock();
     Eratosthene();
-    std::cout << std::fixed << std::endl << "Calcul du crible en : " << std::setprecision(3) 
+    std::cout << std::fixed << "\rCalcul du crible en : " << std::setprecision(3) 
               << double(clock()-start)/double(CLOCKS_PER_SEC) << " s" << std::endl;
     nbp=nbprem(nc);
     pgp=nieme(nbp);
-    std::cout << std::fixed  << std::endl << "Et tout le calcul en : " << std::setprecision(3)
-              << double(clock()-start)/double(CLOCKS_PER_SEC) << " s" << std::endl;
     std::cout << std::endl << "Nombre de nombres premiers calcul\202s : " << nbp << std::endl;
     std::cout << std::endl << "Le premier nombre premier est : " << 2 << std::endl;
     std::cout << std::endl << "Le " << nbp << "-i\212me nombre premier est : " << pgp << std::endl;
