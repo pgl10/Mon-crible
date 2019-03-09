@@ -9,8 +9,6 @@ Le crible a : 7142857143 octets
 
 Calcul du crible en : 1158.667 s
 
-Et tout le calcul en : 1164.964 s
-
 Nombre de nombres premiers calculés : 9920079604
 
 Le premier nombre premier est : 2
