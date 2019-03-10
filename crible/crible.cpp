@@ -274,10 +274,11 @@ void dialogue() {
             car=cde[0];
             if(car == 'q') break;
             for(i=0; i<int64_t(strlen(cde)); i++) cde[i]=cde[i+1];
+            n = 1; // pour le cas où sscanf_s() ne peut pas lire n
             i=sscanf_s(cde, "%I64d", &n);
-            if(car!='q' && !(i>0)) {menu(); good=false;}
-            if(car=='?' && n>nbp ) {menu(); good=false;}
-            if( n < 1 || n > pgp ) {menu(); good=false;}
+            if(!(i>0) || n < 1 || n > pgp) good=false;
+            if(car=='?' && n>nbp) good=false;
+            if(!good) menu();
         }while(!good);
         if(car=='n') {
             i = nbprem(n);
