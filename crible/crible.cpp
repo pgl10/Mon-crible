@@ -234,7 +234,7 @@ int64_t nieme(int64_t i) {
     l=z/8;
     // octet par octet
     k=0;
-    for(j=0; j<l; j++) {
+    for(j=0; j<=l; j++) {
         n=n+nk[int(crible[k])];
         if(n >= i) break;
         ++k;
@@ -263,15 +263,22 @@ void menu() {
 void dialogue() {
     char cde[256], car;
     int64_t i, n;
+    int64_t nbp=nbprem(nc);
+    int64_t pgp=nieme(nbp);
+    bool good;
     for(;;) {
         do {
+            good = true;
             std::cout << std::endl << "> ";
             std::cin.getline(cde, 256);
             car=cde[0];
+            if(car == 'q') break;
             for(i=0; i<int64_t(strlen(cde)); i++) cde[i]=cde[i+1];
             i=sscanf_s(cde, "%I64d", &n);
-            if(car!='q' && !(i>0)) menu();
-        }while(car!='q' && !(i>0));
+            if(car!='q' && !(i>0)) {menu(); good=false;}
+            if(car=='?' && n>nbp ) {menu(); good=false;}
+            if( n < 1 || n > pgp ) {menu(); good=false;}
+        }while(!good);
         if(car=='n') {
             i = nbprem(n);
             std::cout << "De 1 \205 " << n << " il y a " << i << " nombres premiers" << std::endl;
@@ -279,19 +286,23 @@ void dialogue() {
         }
         else if(car=='p') {
             if(prem(n)) std::cout << n << " est un nombre premier" << std::endl;
+            else if(n == 1) std::cout <<  "1 n'est pas un nombre premier"  << std::endl; 
             else std::cout << n << " est un nombre compos\202" << std::endl;
         }
         else if(car=='q') break;
         else if(car=='r') {
             i = nbprem(n);
-            if(prem(n)) std::cout << n << " est le " << i << "-i\212me nombre premier" << std::endl;
-            else std::cout << n << " est compos\202 et suit le " << i << "-i\212me premier"  << std::endl;
+            if(n==1) std::cout << "1 n'est pas un nombre premier"  << std::endl; 
+            else if(n==2) std::cout << "2 est le 1-er nombre premier"  << std::endl; 
+            else if(prem(n)) std::cout << n << " est le " << i << "-i\212me nombre premier" << std::endl;
+            else std::cout << n << " est un nombre compos\202 qui suit le " << i << "-i\212me premier"  << std::endl;
         }
         else if(car=='s') {
             std::cout << "Le nombre premier qui suit " << n << " est " << next(n) << std::endl;
         }
         else if(car=='?') {
-            std::cout << "Le " << n << "-i\212me nombre premier est : " << nieme(n) << std::endl;
+            if(n==1) std::cout << "Le 1-er nombre premier est : " << nieme(n) << std::endl;
+            else std::cout << "Le " << n << "-i\212me nombre premier est : " << nieme(n) << std::endl;
         }
         else menu();
     }
