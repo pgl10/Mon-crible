@@ -281,8 +281,15 @@ void dialogue() {
         }while(!good);
         if(car=='n') {
             i = nbprem(n);
-            std::cout << "De 1 \205 " << n << " il y a " << i << " nombres premiers" << std::endl;
-            std::cout << "et le dernier est " << nieme(i) << std::endl;
+            if(n==1) std::cout << "De 1 \205 1 il n'y a aucun nombre premier" << std::endl;
+            else if(n==2) {
+                std::cout << "De 1 \205 2 il y a 1 nombre premier " << std::endl;
+                std::cout << "et le dernier est 2" << std::endl;
+            }
+            else {
+                std::cout << "De 1 \205 " << n << " il y a " << i << " nombres premiers" << std::endl;
+                std::cout << "et le dernier est " << nieme(i) << std::endl;
+            }
         }
         else if(car=='p') {
             if(prem(n)) std::cout << n << " est un nombre premier" << std::endl;
